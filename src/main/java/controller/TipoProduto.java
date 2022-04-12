@@ -12,11 +12,11 @@ public class TipoProduto {
 
     }
 
-    public getTip_Id(){
+    public int getTip_Id(){
         return this.tip_id;
     }
 
-    public getTip_Descricao(){
+    public String getTip_Descricao(){
         return this.tip_descricao;
     }
 
