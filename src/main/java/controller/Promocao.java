@@ -1,6 +1,6 @@
 package controller;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Promocao {
 
@@ -27,6 +27,8 @@ public class Promocao {
         this.fk_tipo_promocao_tip_id = fk_tipo_promocao_tip_id;
 
     }
+    public void addPromocao(Promocao promocao)
+    { }
 
     public int getPro_Id() {
         return this.pro_id;

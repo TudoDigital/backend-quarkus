@@ -1,14 +1,16 @@
 package controller;
 
+import java.util.Date;
+
 public class Venda{
 
     private int ven_id;
-    private int ven_nf;
+    private String ven_nf;
     private Date ven_dt_venda;
     private float ven_preco_total;
     private float ven_preco_desc;
 
-    public Venda (int ven_id, int ven_nf, Date ven_dt_venda, float ven_preco_total, float ven_preco_desc) {
+    public Venda (int ven_id, String ven_nf, Date ven_dt_venda, float ven_preco_total, float ven_preco_desc) {
 
         this.ven_id = ven_id;
         this.ven_nf = ven_nf;
@@ -22,7 +24,7 @@ public class Venda{
         return this.ven_id;
     }
     
-    public int getVen_Nf(){
+    public String getVen_Nf(){
         return this.ven_nf;
     }
 

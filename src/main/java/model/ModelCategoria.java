@@ -9,12 +9,16 @@ import java.util.LinkedList;
 public class ModelCategoria {
 
     private List<Venda> vendas = new LinkedList<Venda>();
+    private List<Categoria> categorias;
 
     public ModelCategoria(int cat_id, String cat_descricao) {
 
         addCategoria(new Categoria(cat_id, cat_descricao));
 
     }
+
+    public void addCategoria(Categoria c)
+    { }
 
     public Categoria buscaCategoria(int cat_id) {
 

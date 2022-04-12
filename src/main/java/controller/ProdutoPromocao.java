@@ -12,11 +12,11 @@ public class ProdutoPromocao {
 
     }
 
-    public getFk_Promocao_Pro_Id() {
+    public int getFk_Promocao_Pro_Id() {
         return this.fk_promocao_pro_id;
     }
 
-    public getFk_Produto_Pdt_Id() {
+    public int getFk_Produto_Pdt_Id() {
         return this.fk_produto_pdt_id;
     }
 

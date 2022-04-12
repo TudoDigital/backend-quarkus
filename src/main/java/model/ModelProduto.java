@@ -6,17 +6,17 @@ import java.util.LinkedList;
 
 public class ModelProduto {
 
+	private Produto produto;
 	private List<Produto> produtos = new LinkedList<Produto>();
 	
 	public ModelProduto(int pdt_id, String pdt_nome, Float pdt_preco, String pdt_descricao, int fk_categoria_cat_id) {
-		
-		addProduto(new Produto(nome, preco, descricao, idCategoria));
-		
+		produto = new Produto(pdt_id, pdt_nome, pdt_preco, pdt_descricao, fk_categoria_cat_id);
+		addProduto();
 	}
 
-	public void addProduto(Produto produto) {
+	public void addProduto() {
 
-		produto.addProduto(produto);
+		produto.addProduto();
 
 	}
 
@@ -38,6 +38,16 @@ public class ModelProduto {
 
 		return produtos;
 
+	}
+
+	public boolean getExistePromocao(int produtoId)
+	{ return false; }
+
+	public String[] buscaTipoPromocao(int produtoId)
+	{ 
+		String[] string = new String[0];
+
+		return string;
 	}
 	
 }

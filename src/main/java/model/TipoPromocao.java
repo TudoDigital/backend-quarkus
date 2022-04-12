@@ -1,12 +1,13 @@
 package model;
 
-import controller.TipoPromocao;
+// import controller.TipoPromocao;
+
 import java.util.List;
 import java.util.LinkedList;
 
 public class TipoPromocao {
 
-    private List<TipoPromocao> tiposPromocao = new LinkedList<tiposPromocao>();
+    private List<TipoPromocao> tiposPromocao = new LinkedList<TipoPromocao>();
 
     public TipoPromocao (int tip_id, String tip_descricao){
 
@@ -16,7 +17,7 @@ public class TipoPromocao {
 
     public TipoPromocao buscaTiposPromocao(int tip_id){
 
-        for(TipoPromocao tiposPromocao:tipoPromocao){
+        for(TipoPromocao tipoPromocao:tiposPromocao){
 
             if((tipoPromocao.getTip_Id()) == tip_id){
 
@@ -32,8 +33,13 @@ public class TipoPromocao {
 
     public List<TipoPromocao> getTiposPromocao() {
 
-        return tipoPromocao;
+        return tiposPromocao;
 
     }
 
+    public void addTipoPromocao(TipoPromocao t)
+    { }
+
+    public int getTip_Id() 
+    { return 0; }
 }

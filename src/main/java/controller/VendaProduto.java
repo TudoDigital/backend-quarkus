@@ -16,20 +16,20 @@ public class VendaProduto {
 
     }
 
-    public getVen_Pro_Quant() {
-        return this.ven_pro_quant;
+    public int getVen_Pro_Quant() {
+        return ven_pro_quant;
     }
 
-    public getVen_Preco_Desc() {
-        return this.ven_pro_desconto;
+    public int getVen_Preco_Desc() {
+        return ven_pro_desconto;
     }
 
-    public getFk_Produto_Pdt_Id() {
-        return this.fk_produto_pdt_id;
+    public int getFk_Produto_Pdt_Id() {
+        return fk_produto_pdt_id;
     }
 
-    public getFk_Venda_Ven_Id() {
-        return this.fk_venda_ven_id;
+    public int getFk_Venda_Ven_Id() {
+        return fk_venda_ven_id;
     }
 
 }
