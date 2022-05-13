@@ -1,15 +1,19 @@
-package com.dynamics.domain.produto;
+package com.dynamics.domain;
 
-import com.dynamics.domain.categoria.Categoria;
-import com.dynamics.domain.promocao.Promocao;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-
-import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name="Produto")
-public class Produto extends PanacheEntityBase {
+public class ProdutoDomain extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="Id")
@@ -23,7 +27,7 @@ public class Produto extends PanacheEntityBase {
 
     @ManyToOne
     @JoinColumn(name="IdCategoria")
-    public Categoria Categoria;
+    public CategoriaDomain Categoria;
 
 //    @ManyToMany(mappedBy = "produtos")
 //    public List<Promocao> promocoes;
