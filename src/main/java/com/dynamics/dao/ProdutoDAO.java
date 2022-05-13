@@ -1,48 +1,43 @@
-package com.dynamics.domain.produto;
+package com.dynamics.dao;
 
-import com.dynamics.domain.categoria.Categoria;
+import java.util.List;
+
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
+
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.transaction.Transactional;
-import javax.ws.rs.*;
-import javax.ws.rs.core.Response;
-import java.util.List;
+import com.dynamics.domain.CategoriaDomain;
+import com.dynamics.domain.ProdutoDomain;
+import com.dynamics.domain.ProdutoPromocaoDomain;
 
-@Path("/produto")
-@ApplicationScoped
-@Produces("application/json")
-@Consumes("application/json")
-public class ProdutoResource{
 
-    @GET
-    public List<Produto> getProduto(){
-        return Produto.listAll();
+public class ProdutoDAO {
+	
+
+	public List<ProdutoDomain> getProduto(){
+        return ProdutoPromocaoDomain.listAll();
     }
-
-    @GET
-    @Path("/{id}")
-    public Produto getProdutoById(@PathParam Short id) {
-        Produto produto = Produto.findById(id);
+	
+    public ProdutoDomain getProdutoById(@PathParam Short id) {
+    	ProdutoDomain produto = ProdutoDomain.findById(id);
         if (produto == null) {
             throw new WebApplicationException("Produto com id: " + id + " não existe.", 404);
         }
         return produto;
     }
 
-    @POST
-    @Transactional
-    public Response insertProduto(@RequestBody Produto produto){
+  
+    public Response insertProduto(@RequestBody ProdutoDomain produto){
         produto.persist();
         return Response.ok(produto).status(201).build();
     }
 
-    @DELETE
-    @Path("{id}")
-    @Transactional
+
+ 
     public Response deleteProduto(@PathParam Short id) {
-        Produto produto = Produto.findById(id);
+        ProdutoDomain produto = ProdutoDomain.findById(id);
         if (produto == null) {
             throw new WebApplicationException("Produto com o id: " + id + " não existe.", 404);
         }
@@ -50,12 +45,11 @@ public class ProdutoResource{
         return Response.status(204).build();
     }
 
-    @PUT
-    @Path("{id}")
-    @Transactional
-    public Produto updateProduto(@PathParam Short id, Produto produto) {
+   
 
-        Produto objeto = Produto.findById(id);
+    public ProdutoDomain updateProduto(@PathParam Short id, ProdutoDomain produto) {
+
+        ProdutoDomain objeto = ProdutoDomain.findById(id);
 
         if (objeto == null) {
             throw new WebApplicationException("Produto com id: " + id + " não existe.", 404);
@@ -72,7 +66,7 @@ public class ProdutoResource{
         }
         if (produto.Categoria != null ){
             System.out.println("Categoria não é nulo");
-            Categoria categoria = Categoria.findById(produto.Categoria.Id);
+            CategoriaDomain categoria = CategoriaDomain.findById(produto.Categoria.Id);
             if (categoria != null) {
                 System.out.println("Categoria existe");
                 objeto.Categoria = produto.Categoria;
