@@ -53,37 +53,32 @@ public class PromocaoDAO {
 	        if (objeto == null) {
 	            throw new WebApplicationException("Promoção com id: " + id + " não existe.", 404);
 	        }
-	        System.out.println(promocao.Id);
-	        System.out.println(promocao.Descricao);
-	        System.out.println(promocao.Desconto);
 
-	        if (objeto.Descricao != null) {
-	            objeto.Descricao = promocao.Descricao;
+	        if (objeto.getDescricao() != null) {
+	            objeto.setDescricao(promocao.getDescricao());
 	        }
-	        if (objeto.Desconto != null) {
-	            objeto.Desconto = promocao.Desconto;
+	        if (objeto.getDesconto() != null) {
+	            objeto.setDesconto(promocao.getDesconto());
 	        }
-	        if (objeto.datainicio != null) {
-	            objeto.datainicio = promocao.datainicio;
+	        if (objeto.getDatainicio() != null) {
+	            objeto.setDatainicio(promocao.getDatainicio());
 	        }
-	        if (objeto.datafim != null) {
-	            objeto.datafim = promocao.datafim;
+	        if (objeto.getDatafim() != null) {
+	            objeto.setDatafim(promocao.getDatafim());
 	        }
-	        if (objeto.QtdeMin != null) {
-	            objeto.QtdeMin = promocao.QtdeMin;
+	        if (objeto.getQtdeMin() != null) {
+	            objeto.setQtdeMin(promocao.getQtdeMin());
 	        }
-	        if (objeto.QtdeBonus != null) {
-	            objeto.QtdeBonus = promocao.QtdeBonus;
+	        if (objeto.getQtdeBonus() != null) {
+	            objeto.setQtdeBonus(promocao.getQtdeBonus());
 	        }
-	        if (objeto.Ativo != null) {
-	            objeto.Ativo = promocao.Ativo;
+	        if (objeto.getAtivo() != null) {
+	            objeto.setAtivo(promocao.getAtivo());
 	        }
-	        if (promocao.TipoPromocao != null ){
-	            System.out.println("Atualizando tipopromocao");//Mensagem no terminal
-	            TipoPromocaoDomain tipopromocao = TipoPromocaoDomain.findById(promocao.TipoPromocao.Id);
+	        if (promocao.getTipoPromocao() != null ){
+	            TipoPromocaoDomain tipopromocao = TipoPromocaoDomain.findById(promocao.getTipoPromocao().Id);
 	            if (tipopromocao != null) {
-	                System.out.println("tipopromocao existe");//Mensagem no terminal
-	                objeto.TipoPromocao = promocao.TipoPromocao;
+	                objeto.setTipoPromocao(promocao.getTipoPromocao());
 	            }
 	        }
 	        return objeto;
