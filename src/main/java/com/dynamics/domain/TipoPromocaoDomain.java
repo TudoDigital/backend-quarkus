@@ -11,8 +11,26 @@ public class TipoPromocaoDomain extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="Id")
-    public Short Id;
+    private Short Id;
 
     @Column(name = "Descricao")
-    public String Descricao;
+    private String Descricao;
+
+
+    public Short getId() {
+        return this.Id;
+    }
+
+    public void setId(Short Id) {
+        this.Id = Id;
+    }
+
+    public String getDescricao() {
+        return this.Descricao;
+    }
+
+    public void setDescricao(String Descricao) {
+        this.Descricao = Descricao;
+    }
+
 }

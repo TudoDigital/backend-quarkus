@@ -8,18 +8,19 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import com.dynamics.dao.PromocaoDAO;
 import com.dynamics.domain.PromocaoDomain;
+import com.dynamics.dto.PromocaoDTO;
 
 public class PromocaoService {
 
 	PromocaoDAO promocaoDAO = new PromocaoDAO();
 
 		
-	    public List<PromocaoDomain> getPromocao(){
+	    public List<PromocaoDTO> getPromocao(){
 	        return promocaoDAO.getPromocao();
 	    }
 
 	    
-	    public PromocaoDomain getPromocaoById(@PathParam Short id) {
+	    public PromocaoDTO getPromocaoById(@PathParam Short id) {
 	        return promocaoDAO.getPromocaoById(id);
 	    }
 

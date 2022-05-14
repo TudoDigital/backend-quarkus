@@ -1,5 +1,6 @@
 package com.dynamics.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.WebApplicationException;
@@ -9,22 +10,32 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import com.dynamics.domain.PromocaoDomain;
 import com.dynamics.domain.TipoPromocaoDomain;
+import com.dynamics.dto.PromocaoDTO;
 
 
 public class PromocaoDAO {
 	
 		
-	    public List<PromocaoDomain> getPromocao(){
-	        return PromocaoDomain.listAll();
-	    }
+	public List<PromocaoDTO> getPromocao(){
+        List<PromocaoDTO> promocoesdto = new ArrayList<PromocaoDTO>();
+        List<PromocaoDomain> promocoes = new ArrayList<PromocaoDomain>();
+        promocoes = PromocaoDomain.listAll();
+        
+        promocoes.stream().forEach(promocao -> {
+            PromocaoDTO dto = new PromocaoDTO(promocao);
+            promocoesdto.add(dto);
+        });
+        return promocoesdto;
+    }
 
 	  
-	    public PromocaoDomain getPromocaoById(@PathParam Short id) {
+	    public PromocaoDTO getPromocaoById(@PathParam Short id) {
 	        PromocaoDomain promocao = PromocaoDomain.findById(id);
 	        if (promocao == null) {
 	            throw new WebApplicationException("Promoção com id: " + id + " não existe.", 404);
 	        }
-	        return promocao;
+			PromocaoDTO dto = new PromocaoDTO(promocao);
+	        return dto;
 	    }
 	
 		
@@ -76,7 +87,7 @@ public class PromocaoDAO {
 	            objeto.setAtivo(promocao.getAtivo());
 	        }
 	        if (promocao.getTipoPromocao() != null ){
-	            TipoPromocaoDomain tipopromocao = TipoPromocaoDomain.findById(promocao.getTipoPromocao().Id);
+	            TipoPromocaoDomain tipopromocao = TipoPromocaoDomain.findById(promocao.getTipoPromocao().getId());
 	            if (tipopromocao != null) {
 	                objeto.setTipoPromocao(promocao.getTipoPromocao());
 	            }

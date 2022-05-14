@@ -1,5 +1,6 @@
 package com.dynamics.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.WebApplicationException;
@@ -10,26 +11,43 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import com.dynamics.domain.CategoriaDomain;
 import com.dynamics.domain.ProdutoDomain;
+import com.dynamics.dto.ProdutoDTO;
 
 public class ProdutoDAO {
 	
 
-	public List<ProdutoDomain> getProduto(){
-        return ProdutoDomain.listAll();
+	public List<ProdutoDTO> getProduto(){
+        List<ProdutoDTO> produtosdto = new ArrayList<ProdutoDTO>();
+        List<ProdutoDomain> produtos = new ArrayList<ProdutoDomain>();
+        produtos = ProdutoDomain.listAll();
+        
+        produtos.stream().forEach(produto -> {
+            ProdutoDTO dto = new ProdutoDTO(produto);
+            produtosdto.add(dto);
+        });
+        return produtosdto;
     }
 	
-    public ProdutoDomain getProdutoById(@PathParam Short id) {
+    public ProdutoDTO getProdutoById(@PathParam Short id) {
     	ProdutoDomain produto = ProdutoDomain.findById(id);
         if (produto == null) {
             throw new WebApplicationException("Produto com id: " + id + " não existe.", 404);
         }
-        return produto;
+        ProdutoDTO dto = new ProdutoDTO(produto);
+        return dto;
     }
 
   
-    public Response insertProduto(@RequestBody ProdutoDomain produto){
-        produto.persist();
-        return Response.ok(produto).status(201).build();
+    public Response insertProduto(@RequestBody ProdutoDTO produto){
+        ProdutoDomain entity = new ProdutoDomain();
+        entity.setNome(produto.nome);
+        entity.setPreco(produto.preco);
+        CategoriaDomain categoria = new CategoriaDomain();
+        categoria.setId(produto.IdCategoria);
+        entity.setCategoria(categoria);
+
+        entity.persist();
+        return Response.ok(entity).status(201).build();
     }
 
 
