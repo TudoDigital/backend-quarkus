@@ -18,26 +18,26 @@ public class CategoriaDomain extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="Id")
-    public Short Id;
+    private Short Id;
 
     @Column(name="Descricao")
-    public String Descricao;
 
-	public Short getId() {
-		return Id;
-	}
+    private String Descricao;
 
-	public void setId(Short id) {
-		Id = id;
-	}
 
-	public String getDescricao() {
-		return Descricao;
-	}
+    public Short getId() {
+        return this.Id;
+    }
 
-	public void setDescricao(String descricao) {
-		Descricao = descricao;
-	}
-    
-    
+    public void setId(Short Id) {
+        this.Id = Id;
+    }
+
+    public String getDescricao() {
+        return this.Descricao;
+    }
+
+    public void setDescricao(String Descricao) {
+        this.Descricao = Descricao;
+    }
 }

@@ -3,10 +3,11 @@ package com.dynamics.domain;
 
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,122 +26,122 @@ public class PromocaoDomain extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="Id")
-    public Short Id;
+    private Short Id;
 
     @Column(name="Descricao")
-    public String Descricao;
+    private String Descricao;
 
     @Column(name = "Desconto")
-    public BigDecimal Desconto;
+    private BigDecimal Desconto;
 
     @Column(name = "DataInicio")
-    public Date datainicio;
+    private Date datainicio;
 
     @Column(name = "DataFim")
-    public Date datafim;
+    private Date datafim;
 
     @Column(name = "QtdeMin")
-    public Integer QtdeMin;
+    private Integer QtdeMin;
 
     @Column(name = "QtdeBonus")
-    public Integer QtdeBonus;
+    private Integer QtdeBonus;
 
     @Column(name = "Ativo")
-    public Boolean Ativo;
+    private Boolean Ativo;
 
     @ManyToOne
     @JoinColumn(name = "IdTipoPromocao")
-    public TipoPromocaoDomain TipoPromocao;
+    private TipoPromocaoDomain TipoPromocao;
 
     @ManyToMany
     @JoinTable(name = "ProdutoPromocao",
             joinColumns = @JoinColumn(name = "IdPromocao"),
-            inverseJoinColumns = @JoinColumn(name = "IdProduto"))
-    public List<ProdutoDomain> produtos;
+            inverseJoinColumns = @JoinColumn(name = "IdProduto")
+            )
+    private Set<ProdutoDomain> produtos;    
 
-	public Short getId() {
-		return Id;
-	}
+    public Short getId() {
+        return this.Id;
+    }
 
-	public void setId(Short id) {
-		Id = id;
-	}
+    public void setId(Short Id) {
+        this.Id = Id;
+    }
 
-	public String getDescricao() {
-		return Descricao;
-	}
+    public String getDescricao() {
+        return this.Descricao;
+    }
 
-	public void setDescricao(String descricao) {
-		Descricao = descricao;
-	}
+    public void setDescricao(String Descricao) {
+        this.Descricao = Descricao;
+    }
 
-	public BigDecimal getDesconto() {
-		return Desconto;
-	}
+    public BigDecimal getDesconto() {
+        return this.Desconto;
+    }
 
-	public void setDesconto(BigDecimal desconto) {
-		Desconto = desconto;
-	}
+    public void setDesconto(BigDecimal Desconto) {
+        this.Desconto = Desconto;
+    }
 
-	public Date getDatainicio() {
-		return datainicio;
-	}
+    public Date getDatainicio() {
+        return this.datainicio;
+    }
 
-	public void setDatainicio(Date datainicio) {
-		this.datainicio = datainicio;
-	}
+    public void setDatainicio(Date datainicio) {
+        this.datainicio = datainicio;
+    }
 
-	public Date getDatafim() {
-		return datafim;
-	}
+    public Date getDatafim() {
+        return this.datafim;
+    }
 
-	public void setDatafim(Date datafim) {
-		this.datafim = datafim;
-	}
+    public void setDatafim(Date datafim) {
+        this.datafim = datafim;
+    }
 
-	public Integer getQtdeMin() {
-		return QtdeMin;
-	}
+    public Integer getQtdeMin() {
+        return this.QtdeMin;
+    }
 
-	public void setQtdeMin(Integer qtdeMin) {
-		QtdeMin = qtdeMin;
-	}
+    public void setQtdeMin(Integer QtdeMin) {
+        this.QtdeMin = QtdeMin;
+    }
 
-	public Integer getQtdeBonus() {
-		return QtdeBonus;
-	}
+    public Integer getQtdeBonus() {
+        return this.QtdeBonus;
+    }
 
-	public void setQtdeBonus(Integer qtdeBonus) {
-		QtdeBonus = qtdeBonus;
-	}
+    public void setQtdeBonus(Integer QtdeBonus) {
+        this.QtdeBonus = QtdeBonus;
+    }
 
-	public Boolean getAtivo() {
-		return Ativo;
-	}
+    public Boolean isAtivo() {
+        return this.Ativo;
+    }
 
-	public void setAtivo(Boolean ativo) {
-		Ativo = ativo;
-	}
+    public Boolean getAtivo() {
+        return this.Ativo;
+    }
 
-	public TipoPromocaoDomain getTipoPromocao() {
-		return TipoPromocao;
-	}
+    public void setAtivo(Boolean Ativo) {
+        this.Ativo = Ativo;
+    }
 
-	public void setTipoPromocao(TipoPromocaoDomain tipoPromocao) {
-		TipoPromocao = tipoPromocao;
-	}
+    public TipoPromocaoDomain getTipoPromocao() {
+        return this.TipoPromocao;
+    }
 
-//	public List<ProdutoDomain> getProdutos() {
-//		return produtos;
-//	}
-	public List<ProdutoDomain> getProdutos() {
-		return produtos;
-	}
+    public void setTipoPromocao(TipoPromocaoDomain TipoPromocao) {
+        this.TipoPromocao = TipoPromocao;
+    }
 
-	public void setProdutos(List<ProdutoDomain> produtos) {
-		this.produtos = produtos;
-	}
-    
-    
+    public Set<ProdutoDomain> getProdutos() {
+        return this.produtos;
+    }
+
+    public void setProdutos(Set<ProdutoDomain> produtos) {
+        this.produtos = produtos;
+    }
     
 }

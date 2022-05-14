@@ -15,7 +15,6 @@ public class ProdutoPromocaoService {
 	 public Response vincularPromocaoProduto(@QueryParam("IdPromocao") Short idpromocao,
              @QueryParam("IdProduto") Short idproduto){
 
-
 		 return vincularDAO.vincularPromocaoProduto(idpromocao, idproduto);
 	 }
 
