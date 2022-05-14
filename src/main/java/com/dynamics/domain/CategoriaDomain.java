@@ -22,4 +22,22 @@ public class CategoriaDomain extends PanacheEntityBase {
 
     @Column(name="Descricao")
     public String Descricao;
+
+	public Short getId() {
+		return Id;
+	}
+
+	public void setId(Short id) {
+		Id = id;
+	}
+
+	public String getDescricao() {
+		return Descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		Descricao = descricao;
+	}
+    
+    
 }

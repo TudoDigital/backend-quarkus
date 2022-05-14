@@ -17,6 +17,7 @@ import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import com.dynamics.domain.ProdutoDomain;
+import com.dynamics.dto.ProdutoDTO;
 import com.dynamics.service.ProdutoService;
 
 @Path("/produto")
@@ -28,18 +29,29 @@ public class ProdutoResource{
 	ProdutoService produtoService = new ProdutoService();
 	
 	
-    @GET
-    public List<ProdutoDomain> getProduto(){
-        return produtoService.getProduto();
-    }
+//    @GET
+//    public List<ProdutoDomain> getProduto(){
+//        return produtoService.getProduto();
+//    }
+//
+//    @GET
+//    @Path("/{id}")
+//    public ProdutoDomain getProdutoById(@PathParam Short id) {
+//       
+//        return produtoService.getProdutoById(id);
+//    }
 
-    @GET
-    @Path("/{id}")
-    public ProdutoDomain getProdutoById(@PathParam Short id) {
-       
-        return produtoService.getProdutoById(id);
-    }
+//	@GET
+//	public List<ProdutoDTO> getProduto(){
+//		return produtoService.getProduto();
+//	}
 
+	@GET
+	@Path("/{id}")
+	public ProdutoDTO getProdutoById(@PathParam Short id) {
+
+		return produtoService.getProdutoById(id);
+	}
     
     @POST
     @Transactional

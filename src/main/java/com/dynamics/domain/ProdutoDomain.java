@@ -29,6 +29,41 @@ public class ProdutoDomain extends PanacheEntityBase {
     @JoinColumn(name="IdCategoria")
     public CategoriaDomain Categoria;
 
+	public Short getId() {
+		return Id;
+	}
+
+	public void setId(Short id) {
+		Id = id;
+	}
+
+	public String getNome() {
+		return Nome;
+	}
+
+	public void setNome(String nome) {
+		Nome = nome;
+	}
+
+	public java.math.BigDecimal getPreco() {
+		return Preco;
+	}
+
+	public void setPreco(java.math.BigDecimal preco) {
+		Preco = preco;
+	}
+
+	public CategoriaDomain getCategoria() {
+		return Categoria;
+	}
+
+	public void setCategoria(CategoriaDomain categoria) {
+		Categoria = categoria;
+	}
+
 //    @ManyToMany(mappedBy = "produtos")
 //    public List<Promocao> promocoes;
+    
+    
+    
 }

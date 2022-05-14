@@ -17,7 +17,7 @@ public class ProdutoDAO {
 	
 
 	public List<ProdutoDomain> getProduto(){
-        return ProdutoPromocaoDomain.listAll();
+        return ProdutoDomain.listAll();
     }
 	
     public ProdutoDomain getProdutoById(@PathParam Short id) {

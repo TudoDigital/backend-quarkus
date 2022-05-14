@@ -13,6 +13,8 @@ import javax.ws.rs.core.Response;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import com.dynamics.domain.PromocaoDomain;
+import com.dynamics.dto.PromocaoDTO;
+import com.dynamics.dto.PromocaoDTOFindAll;
 import com.dynamics.service.PromocaoService;
 
 @Path("/promocao")
@@ -25,9 +27,20 @@ public class PromocaoResource{
         return promocaoService.getPromocao();
     }
 
+//    @GET
+//    @Path("/{id}")
+//    public PromocaoDomain getPromocaoById(@PathParam Short id) {
+//        return promocaoService.getPromocaoById(id);
+//    }
+    
+//    @GET
+//    public List<PromocaoDTOFindAll> getPromocao(){
+//        return promocaoService.getPromocao();
+//    }
+    
     @GET
     @Path("/{id}")
-    public PromocaoDomain getPromocaoById(@PathParam Short id) {
+    public PromocaoDTO getPromocaoById(@PathParam Short id) {
         return promocaoService.getPromocaoById(id);
     }
 

@@ -16,9 +16,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.dynamics.domain.ProdutoDomain;
-import com.dynamics.domain.TipoPromocaoDomain;
-
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
@@ -60,6 +57,90 @@ public class PromocaoDomain extends PanacheEntityBase {
             joinColumns = @JoinColumn(name = "IdPromocao"),
             inverseJoinColumns = @JoinColumn(name = "IdProduto"))
     public List<ProdutoDomain> produtos;
+
+	public Short getId() {
+		return Id;
+	}
+
+	public void setId(Short id) {
+		Id = id;
+	}
+
+	public String getDescricao() {
+		return Descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		Descricao = descricao;
+	}
+
+	public BigDecimal getDesconto() {
+		return Desconto;
+	}
+
+	public void setDesconto(BigDecimal desconto) {
+		Desconto = desconto;
+	}
+
+	public Date getDatainicio() {
+		return datainicio;
+	}
+
+	public void setDatainicio(Date datainicio) {
+		this.datainicio = datainicio;
+	}
+
+	public Date getDatafim() {
+		return datafim;
+	}
+
+	public void setDatafim(Date datafim) {
+		this.datafim = datafim;
+	}
+
+	public Integer getQtdeMin() {
+		return QtdeMin;
+	}
+
+	public void setQtdeMin(Integer qtdeMin) {
+		QtdeMin = qtdeMin;
+	}
+
+	public Integer getQtdeBonus() {
+		return QtdeBonus;
+	}
+
+	public void setQtdeBonus(Integer qtdeBonus) {
+		QtdeBonus = qtdeBonus;
+	}
+
+	public Boolean getAtivo() {
+		return Ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		Ativo = ativo;
+	}
+
+	public TipoPromocaoDomain getTipoPromocao() {
+		return TipoPromocao;
+	}
+
+	public void setTipoPromocao(TipoPromocaoDomain tipoPromocao) {
+		TipoPromocao = tipoPromocao;
+	}
+
+//	public List<ProdutoDomain> getProdutos() {
+//		return produtos;
+//	}
+	public List<ProdutoDomain> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<ProdutoDomain> produtos) {
+		this.produtos = produtos;
+	}
+    
     
     
 }
