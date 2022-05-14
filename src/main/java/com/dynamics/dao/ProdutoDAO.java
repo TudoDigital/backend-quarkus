@@ -10,14 +10,12 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import com.dynamics.domain.CategoriaDomain;
 import com.dynamics.domain.ProdutoDomain;
-import com.dynamics.domain.ProdutoPromocaoDomain;
-
 
 public class ProdutoDAO {
 	
 
 	public List<ProdutoDomain> getProduto(){
-        return ProdutoPromocaoDomain.listAll();
+        return ProdutoDomain.listAll();
     }
 	
     public ProdutoDomain getProdutoById(@PathParam Short id) {
@@ -54,22 +52,17 @@ public class ProdutoDAO {
         if (objeto == null) {
             throw new WebApplicationException("Produto com id: " + id + " não existe.", 404);
         }
-        System.out.println(produto.Id);
-        System.out.println(produto.Preco);
-        System.out.println(produto.Nome);
 
-        if (objeto.Nome != null) {
-            objeto.Nome = produto.Nome;
+        if (objeto.getNome() != null) {
+            objeto.setNome(produto.getNome());
         }
-        if (objeto.Preco != null) {
-            objeto.Preco = produto.Preco;
+        if (objeto.getPreco() != null) {
+            objeto.setPreco(produto.getPreco());
         }
-        if (produto.Categoria != null ){
-            System.out.println("Categoria não é nulo");
-            CategoriaDomain categoria = CategoriaDomain.findById(produto.Categoria.Id);
+        if (produto.getCategoria() != null ){
+            CategoriaDomain categoria = CategoriaDomain.findById(produto.getCategoria().getId());
             if (categoria != null) {
-                System.out.println("Categoria existe");
-                objeto.Categoria = produto.Categoria;
+                objeto.setCategoria(produto.getCategoria());
             }
         }
 

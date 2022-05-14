@@ -44,7 +44,7 @@ public class ProdutoResource{
     @POST
     @Transactional
     public Response insertProduto(@RequestBody ProdutoDomain produto){
-        
+
         return produtoService.insertProduto(produto);
     }
 
